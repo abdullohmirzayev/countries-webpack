@@ -1,4 +1,5 @@
 const path = require("path");
+const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   // mode
@@ -15,6 +16,21 @@ module.exports = {
     clean: true,
   },
   // devServer
-  // module
+  // loader
   // plugins
+  plugins: [
+    new htmlWebpackPlugin({
+      title: "Countires | Home",
+      template: "./src/indexTemp.html",
+      filename: "index.html",
+      chunks: ["main"],
+    }),
+
+    new htmlWebpackPlugin({
+      title: "Countires | About",
+      template: "./src/pages/aboutTemp.html",
+      filename: "about.html",
+      chunks: ["about"],
+    }),
+  ],
 };
