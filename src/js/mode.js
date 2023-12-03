@@ -1,16 +1,16 @@
 const modeBtn = document.querySelector(".header__dark-mode");
 const body = document.querySelector("body");
-const modeFormLocal = localStorage.getItem("mode")
+const modeFromLocal = localStorage.getItem("mode")
   ? localStorage.getItem("mode")
   : null;
 
-if (modeFormLocal) {
+if (modeFromLocal) {
   body.classList.add("dark-mode");
 }
 
 modeBtn.addEventListener("click", () => {
   body.classList.toggle("dark-mode");
-  modeFormLocal
+  modeFromLocal
     ? localStorage.setItem("mode", "")
     : localStorage.setItem("mode", "dark");
 });

@@ -1,16 +1,14 @@
-import loaderToggle from "./loader";
+import loaderToggler from "./loader";
 
-const request = async (recurce) => {
-  loaderToggle(true);
-  const req = await fetch(recurce);
-
+const request = async (reource) => {
+  loaderToggler(true);
+  const req = await fetch(reource);
   if (!req.ok) {
-    loaderToggle(false);
+    loaderToggler(false);
     throw new Error("Something went wrong :(");
   }
-
   const data = await req.json();
-  loaderToggle(false);
+  loaderToggler(false);
   return data;
 };
 

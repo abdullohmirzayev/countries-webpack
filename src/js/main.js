@@ -11,7 +11,6 @@ request(API)
   .then((data) => {
     createCountries(data);
   })
-  .then(() => {})
   .catch((err) => {
     alert(err.message);
   });
