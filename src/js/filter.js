@@ -14,3 +14,29 @@ searchFormEl.search.addEventListener("input", () => {
   });
 });
 
+const searchSelect = document.querySelectorAll(".search__select-list li");
+const searchSelectSpan = document.querySelector(".search__select span");
+
+import { createCountries } from "./updataUI";
+import request from "./request";
+
+searchSelect.forEach((li) => {
+  li.addEventListener("click", () => {
+    searchSelectSpan.textContent = li.textContent;
+    let filterAPI;
+
+    if (li.textContent == "All") {
+      filterAPI = "https://restcountries.com/v3.1/all";
+    } else {
+      filterAPI = `https://restcountries.com/v3.1/region/${li.textContent}`;
+    }
+
+    request(filterAPI)
+      .then((data) => {
+        createCountries(data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  });
+});
