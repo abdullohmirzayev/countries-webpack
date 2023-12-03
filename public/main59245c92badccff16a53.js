@@ -7,7 +7,6 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/css/main.css":
@@ -16,7 +15,18 @@
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://countries/./src/css/main.css?");
+
+/***/ }),
+
+/***/ "./src/js/filter.js":
+/*!**************************!*\
+  !*** ./src/js/filter.js ***!
+  \**************************/
+/***/ (() => {
+
+eval("const searchFormEl = document.querySelector(\".search\");\r\n\r\nsearchFormEl.search.addEventListener(\"input\", () => {\r\n  const searchValue = searchFormEl.search.value.toLowerCase();\r\n  const cardsItem = document.querySelectorAll(\".cards__item\");\r\n  const cardsTitle = document.querySelectorAll(\".cards__title\");\r\n\r\n  cardsTitle.forEach((title, i) => {\r\n    if (title.textContent.toLowerCase().includes(searchValue)) {\r\n      cardsItem[i].style.display = \"block\";\r\n    } else {\r\n      cardsItem[i].style.display = \"none\";\r\n    }\r\n  });\r\n});\r\n\r\n\n\n//# sourceURL=webpack://countries/./src/js/filter.js?");
 
 /***/ }),
 
@@ -26,6 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst loader = document.querySelector(\".loader\");\r\n\r\nconst loaderToggle = (info) => {\r\n  if (info) {\r\n    loader.classList.remove(\"hidden\");\r\n  } else {\r\n    loader.classList.add(\"hidden\");\r\n  }\r\n};\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loaderToggle);\r\n\n\n//# sourceURL=webpack://countries/./src/js/loader.js?");
 
 /***/ }),
@@ -36,7 +47,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./request */ \"./src/js/request.js\");\n/* harmony import */ var _updataUI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./updataUI */ \"./src/js/updataUI.js\");\n\r\n\r\n\r\n\r\n\r\nconst API = \"https://restcountries.com/v3.1/all\";\r\n\r\n(0,_request__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(API)\r\n  .then((data) => {\r\n    (0,_updataUI__WEBPACK_IMPORTED_MODULE_2__.createCountries)(data);\r\n  })\r\n  .then(() => {})\r\n  .catch((err) => {\r\n    alert(err.message);\r\n  });\r\n\n\n//# sourceURL=webpack://countries/./src/js/main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./request */ \"./src/js/request.js\");\n/* harmony import */ var _updataUI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./updataUI */ \"./src/js/updataUI.js\");\n/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./filter */ \"./src/js/filter.js\");\n/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_filter__WEBPACK_IMPORTED_MODULE_3__);\n\r\n\r\n\r\n\r\n\r\n\r\nconst API = \"https://restcountries.com/v3.1/all\";\r\n\r\n(0,_request__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(API)\r\n  .then((data) => {\r\n    (0,_updataUI__WEBPACK_IMPORTED_MODULE_2__.createCountries)(data);\r\n  })\r\n  .then(() => {})\r\n  .catch((err) => {\r\n    alert(err.message);\r\n  });\r\n\n\n//# sourceURL=webpack://countries/./src/js/main.js?");
 
 /***/ }),
 
@@ -46,6 +58,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loader */ \"./src/js/loader.js\");\n\r\n\r\nconst request = async (recurce) => {\r\n  (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(true);\r\n  const req = await fetch(recurce);\r\n\r\n  if (!req.ok) {\r\n    (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(false);\r\n    throw new Error(\"Something went wrong :(\");\r\n  }\r\n\r\n  const data = await req.json();\r\n  (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(false);\r\n  return data;\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (request);\r\n\n\n//# sourceURL=webpack://countries/./src/js/request.js?");
 
 /***/ }),
@@ -56,6 +69,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createCountries: () => (/* binding */ createCountries)\n/* harmony export */ });\nconst cardsEl = document.querySelector(\".cards\");\r\n\r\nconst createCountries = (countries) => {\r\n  countries.forEach((country) => {\r\n    const commonName = country.name.common;\r\n    const population = country.population;\r\n    const region = country.region;\r\n    const capital = country.capital ? country.capital[0] : \"No Capital\";\r\n    const flag = country.flags.svg;\r\n\r\n    // li\r\n    const li = document.createElement(\"li\");\r\n    li.classList.add(\"cards__item\");\r\n    li.innerHTML = `\r\n      <a href=\"./about.html\">\r\n        <img\r\n          src=${flag}\r\n          alt=\"germany-flag\"\r\n          width=\"267\"\r\n          height=\"160\"\r\n        />\r\n        <div class=\"cards__item-inner\">\r\n          <h3 class=\"cards__title\">${commonName}</h3>\r\n          <p class=\"population\">\r\n            Population: <span>${population}</span>\r\n          </p>\r\n          <p class=\"region\">\r\n            Region: <span>${region}</span>\r\n          </p>\r\n          <p class=\"capital\">\r\n            Capital: <span>${capital}</span>\r\n          </p>\r\n        </div>\r\n      </a>;\r\n    `;\r\n\r\n    // ul\r\n    cardsEl.appendChild(li);\r\n  });\r\n};\r\n\n\n//# sourceURL=webpack://countries/./src/js/updataUI.js?");
 
 /***/ })
@@ -87,6 +101,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
